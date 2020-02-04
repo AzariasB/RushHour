@@ -2,6 +2,12 @@
 
 Automatic resolution of the RushHour-like games
 
+## Usage
+After building the solver, launch it with the filename of the puzzle to solve as a parameter :
+``
+./rushhour ./data/rushhour1.txt
+``
+
 ## File format
 The first line must be \[width\],\[height\]
 Then on the \[height\] following lines, there should be \[width\] char to describe the map
