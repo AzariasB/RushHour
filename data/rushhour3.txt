@@ -1,0 +1,10 @@
+8,8
+xxxxxxxx
+x  b   x
+x  bcc x
+xaab   z
+xddd e x
+x   fe x
+xgggf  x
+xxxxxxxx
+

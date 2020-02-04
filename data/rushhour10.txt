@@ -1,0 +1,9 @@
+8,8
+xxxxxxxx
+x  bbb x
+x  cdd x
+xaac   z
+xjjc  ex
+xfffghex
+xiiighex
+xxxxxxxx

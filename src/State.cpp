@@ -52,7 +52,7 @@ bool State::isSolutionOf(const Map &m)
      */
     MapCar carData = m.getCarData(m_mainCar.code);
     const Point &out = m.exit();
-    return carData.originEnd(m_mainCar) == out ||
+    return carData.originEnd(m_mainCar, 1) == out ||
             carData.otherEnd(m_mainCar) == out;
 }
 
