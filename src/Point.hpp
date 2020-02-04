@@ -98,7 +98,5 @@ struct Point{
     int8 x,y;
 };
 
-std::ostream &operator<<(std::ostream &out, const Point &p);
-
 
 #endif // POINT_HPP

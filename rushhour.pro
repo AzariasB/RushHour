@@ -6,7 +6,6 @@ QMAKE_CXXFLAGS  += -std=c++17
 SOURCES += src/main.cpp \
             src/Car.cpp \
             src/Map.cpp \
-            src/Point.cpp \
             src/State.cpp
 
 HEADERS += \

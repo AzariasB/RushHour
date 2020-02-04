@@ -19,29 +19,15 @@ char toReadable(int8 value)
     return static_cast<char>(value + 'a');
 }
 
-std::vector<std::vector<int8>> Map::EMPTY_MAP = {};
-
 Map::Map(){}
 
 Map::Map(int width, int height):
 m_map(height),
+m_emptyMap(height),
 m_width(width),
 m_height(height){
     for(auto &v: m_map)v.resize(m_width, ' ');
-
-    // Creating empty map
-    EMPTY_MAP = std::vector<std::vector<int8>>(m_height);
-    for(int i = 0; i < m_height; ++i){
-        std::vector<int8> target(0);
-        if(i == 0 || i == m_height -1) {
-            target.resize(m_width, 'x');
-        }else {
-            target.resize(m_width, ' ');
-            target[0] = 'x';
-            target[m_width-1] = 'x';
-        }
-        EMPTY_MAP[i] = target;
-    }
+    for(auto &v: m_emptyMap)v.resize(m_width, ' ');
 }
 
 int Map::width() const
@@ -59,10 +45,8 @@ void Map::setValue(int x, int y, char value)
     if(!isValid(x, y))return;
     if(isStaticValue(value)){
         m_map[y][x] = value;
-        if(value == 'z') {
-            m_wayOut = Point(x, y);
-            EMPTY_MAP[y][x] = 'z';
-        }
+        m_emptyMap[y][x] = value;
+        if(value == 'z')  m_wayOut = Point(x, y);
     }else {
         m_map[y][x] = value - 'a';
     }
@@ -86,8 +70,7 @@ char Map::at(int x, int y) const
 
 char Map::at(const Point &p) const
 {
-    if(!isValid(p.x, p.y)) return '@';
-    return m_map[p.y][p.x];
+    return at(p.x, p.y);
 }
 
 void Map::setCarValue(int x, int y, int8 value)
@@ -124,7 +107,7 @@ void Map::addCar(const StateCar &car)
 void Map::reset()
 {
     m_map = std::vector<std::vector<int8>>();
-    for(const auto& vec : EMPTY_MAP) {
+    for(const auto& vec : m_emptyMap) {
         m_map.push_back(vec);
     }
 }
